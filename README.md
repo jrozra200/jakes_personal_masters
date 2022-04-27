@@ -4,7 +4,7 @@ I am curious and want to learn a bunch of different subjects from a bunch of
 different fields. This is an attempt to do that in as free and open-source as 
 possible of a way. 
 
-## Courses of Interest
+## Courses & Topics of Interest
 
 ### AI & ML
 
@@ -14,7 +14,7 @@ possible of a way.
 
 ### Ethics 
 
-1. Fairness and Machine Learning
+1. [Fairness and Machine Learning](https://fairmlbook.org/)
 2. [Data Science Ethics](https://www.edx.org/course/data-science-ethics)
 3. [Calling Bullshit](https://www.callingbullshit.org/index.html)
 
