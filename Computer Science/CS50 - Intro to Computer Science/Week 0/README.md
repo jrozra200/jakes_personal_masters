@@ -27,8 +27,11 @@
 - **Algorithm**: step by step instructions to solve a problem
 - ![algorithm solution time](algorithm_solution.png)
 - ![algorithm psuedocode](algorithm_psuedocode.png)
+- **Abstraction**: turning multiple "blocks" that do a thing into a single "block" 
+that does that thing
+- **Parameterized**: Adding inputs to a function
 
-~~~ PAUSED AT 50:39 ~~~
+
 
 From the stage (binary lights): 
     
