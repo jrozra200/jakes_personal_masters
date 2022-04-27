@@ -15,7 +15,8 @@ possible of a way.
 ### Ethics 
 
 1. Fairness and Machine Learning
-2. Responsible Data Analysis
+2. [Data Science Ethics](https://www.edx.org/course/data-science-ethics)
+3. [Calling Bullshit](https://www.callingbullshit.org/index.html)
 
 ### Computer Science
 
