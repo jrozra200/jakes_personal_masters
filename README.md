@@ -14,7 +14,7 @@ possible of a way.
 
 ### Ethics 
 
-1. [Fairness and Machine Learning](https://fairmlbook.org/)
+1. [Fairness and Machine Learning Book](https://fairmlbook.org/)
 2. [Data Science Ethics](https://www.edx.org/course/data-science-ethics)
 3. [Calling Bullshit](https://www.callingbullshit.org/index.html)
 
@@ -49,4 +49,4 @@ possible of a way.
 
 ## Course Order
 
-1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0)
+1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0) - [Notes and Other Materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science)
