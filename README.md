@@ -11,6 +11,7 @@ possible of a way.
 1. [Introduction to Artificial Intelligence](https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python?delta=0)
 2. [Machine Learning](https://pll.harvard.edu/course/data-science-machine-learning?delta=3)
 3. Deep Learning
+4. Natural Language Processing
 
 ### Ethics 
 
@@ -27,13 +28,13 @@ possible of a way.
 
 ### Cryptography
 
-1. 
+1. [Cryptography](https://www.coursera.org/learn/crypto)
 
 ### Math & Stats
 
 1. Linear Algebra
 2. Probability & Random Variables
-3. 
+3. Game Theory
 
 ### Finance 
 
@@ -49,4 +50,4 @@ possible of a way.
 
 ## Course Order
 
-1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0) - [Notes and Other Materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science)
+1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0)     - [Notes and Other Materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science)
