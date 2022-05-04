@@ -21,5 +21,16 @@
     through" your code and see values of variables throughout. 
     - "Rubber Duck" debugging is talking through your code, step-by-step, with 
     an inanimate object
-    
-~~~ Stopped at 35:53
+- 1 byte = 8 bits 
+- **Array**: another type of variable that allows you to store multiple values 
+of the same type with the same variable name
+- `string` is an array of characters
+- `NUL` = `\0` = 0000 0000 = 1 byte of 0s
+- `string` can be any number of bytes long, and it is ended by a `\0` (`NUL`)
+- `void` means that we don't take command line arguments
+- If you want your program to take command line arguments, you can add them 
+to your `main`
+- **Exit status**
+    - When a program works properly, main returns 0
+    - when a program does not work properly, it returns a non-zero number
+    - If you aren't explicit about it, main will return 0
