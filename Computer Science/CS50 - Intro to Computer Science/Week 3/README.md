@@ -47,5 +47,27 @@ middle in the direction of the number (up or down)
     - Run time:
         - `O(log n)`
         - `Ω(1)`
+- data structures: create your own data type with `typedef struct`
+- Selection Sort: Select the smallest and place it in the right place
+    - Psudeo code:
+        - For i from 0 to n-1
+            - Find smallest number between numbers[i] and numbers[n-1]
+            - Swap smallest number with numbers[i]
+    - Run time: 
+        - `O(n<sup>2<\sup>)`
+        - `Ω(n<sup>2<\sup>)`
+- Bubble Sort: Compare the first two numbers and swap them if they are misorders
+    - Psuedo code: 
+        - Repeat n-1 times
+            - For i from 0 to n-2
+                - If numbers[i] and numbers[i+1] are out of order, swap them
+            - If no swaps 
+                - Quit
+    - Run time:
+        - `O(n<sup>2<\sup>)`
+        - `Ω(n)`
+- Sort visualization: https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
+
+    
 
 ~~~ Paused at 49:00
