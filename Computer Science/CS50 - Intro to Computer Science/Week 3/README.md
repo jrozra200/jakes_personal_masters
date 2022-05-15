@@ -66,8 +66,18 @@ middle in the direction of the number (up or down)
     - Run time:
         - `O(n<sup>2<\sup>)`
         - `Ω(n)`
+- Recursion: a programming technique where a function calls itself
+- Merge Sort: Using recursion to split, sort, and merge
+    - Uses more memory but is much faster than the other sorts
+    - Psuedo Code:
+        - If only one number
+            - Quit
+        - Else
+            - Sort left half of numbers
+            - Sort right half of numbers
+            - Merge the two together
+    - Run time:
+        - `O(n log n)`
+        - `Ω(n log n)`
+        - `Θ(n log n)`
 - Sort visualization: https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
-
-    
-
-~~~ Paused at 49:00
