@@ -56,6 +56,7 @@ middle in the direction of the number (up or down)
     - Run time: 
         - `O(n<sup>2<\sup>)`
         - `Ω(n<sup>2<\sup>)`
+        - `Θ(n<sup>2<\sup>)`
 - Bubble Sort: Compare the first two numbers and swap them if they are misorders
     - Psuedo code: 
         - Repeat n-1 times
