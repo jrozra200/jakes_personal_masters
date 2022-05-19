@@ -19,5 +19,3 @@
     - `free`: give a block of ram back
 - `valgrind`: checks out the memory usage of your code
 - [Binky pointer fun](https://www.youtube.com/watch?v=5VnDaHBi8dM&list=PL266A3129CAE45C0A&index=1)
-    
-~~~ Stopped at 1:58:08
