@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>In what country is the world cup being played later this year?</h3>
+                <form>
+                    <button style="button" id="spain">Spain</button>
+                    <button style="button" id="quatar">Quatar</button>
+                    <button style="button" id="china">China</button>
+                    <button style="button" id="usa">USA</button>
+                    <button style="button" id="lich">Lichtenstein</button>
+                    <div id="answer"></div>
+                </form>
+                
+                <script>
+            
+                    document.querySelector('#spain').addEventListener('click', function(e) {
+                        document.querySelector('#spain').style.backgroundColor = "red";
+                        document.querySelector('#quatar').style.backgroundColor = "#d9edff";
+                        document.querySelector('#china').style.backgroundColor = "#d9edff";
+                        document.querySelector('#usa').style.backgroundColor = "#d9edff";
+                        document.querySelector('#lich').style.backgroundColor = "#d9edff";
+                        
+                        document.querySelector("#answer").textContent = 'Incorrect';
+                        e.preventDefault();
+                    });
+                    
+                    document.querySelector('#quatar').addEventListener('click', function(e) {
+                        document.querySelector('#spain').style.backgroundColor = "#d9edff";
+                        document.querySelector('#quatar').style.backgroundColor = "green";
+                        document.querySelector('#china').style.backgroundColor = "#d9edff";
+                        document.querySelector('#usa').style.backgroundColor = "#d9edff";
+                        document.querySelector('#lich').style.backgroundColor = "#d9edff";
+                        
+                        document.querySelector("#answer").textContent = 'Correct!';
+                        e.preventDefault();
+                    });
+                    
+                    document.querySelector('#china').addEventListener('click', function(e) {
+                        document.querySelector('#spain').style.backgroundColor = "#d9edff";
+                        document.querySelector('#quatar').style.backgroundColor = "#d9edff";
+                        document.querySelector('#china').style.backgroundColor = "red";
+                        document.querySelector('#usa').style.backgroundColor = "#d9edff";
+                        document.querySelector('#lich').style.backgroundColor = "#d9edff";
+                        
+                        document.querySelector("#answer").textContent = 'Incorrect';
+                        e.preventDefault();
+                    });
+                    
+                    document.querySelector('#usa').addEventListener('click', function(e) {
+                        document.querySelector('#spain').style.backgroundColor = "#d9edff";
+                        document.querySelector('#quatar').style.backgroundColor = "#d9edff";
+                        document.querySelector('#china').style.backgroundColor = "#d9edff";
+                        document.querySelector('#usa').style.backgroundColor = "red";
+                        document.querySelector('#lich').style.backgroundColor = "#d9edff";
+                        
+                        document.querySelector("#answer").textContent = 'Incorrect';
+                        e.preventDefault();
+                    });
+                    
+                    document.querySelector('#lich').addEventListener('click', function(e) {
+                        document.querySelector('#spain').style.backgroundColor = "#d9edff";
+                        document.querySelector('#quatar').style.backgroundColor = "#d9edff";
+                        document.querySelector('#china').style.backgroundColor = "#d9edff";
+                        document.querySelector('#usa').style.backgroundColor = "#d9edff";
+                        document.querySelector('#lich').style.backgroundColor = "red";
+                        
+                        document.querySelector("#answer").textContent = 'Incorrect';
+                        e.preventDefault();
+                    });
+                    
+                </script>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Who is the greatest soccer player of all time?</h3>
+                <form id='second_form'>
+                    <input autocomplete="off" autofocus id="name" placeholder="Best Player Name" type="text">
+                    <input type="submit">
+                    <div id="free_answer"></div>
+                </form>
+                
+                <script>
+            
+                    document.querySelector('#second_form').addEventListener('submit', function(e) {
+                        let name = document.querySelector('#name').value;
+                        let answer = 'Incorrect';
+                        
+                        if (name == "Pele") {
+                            answer = 'Correct!';
+                        } 
+                        document.querySelector("#free_answer").textContent = answer;
+                        e.preventDefault();
+                    });
+                    
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
