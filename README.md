@@ -54,3 +54,5 @@ possible of a way.
 1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0) 
 - [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science) 
 and [also the materials from the course visual studio](https://github.com/code50/9554768)
+2. [Introduction to Artificial Intelligence](https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python?delta=0)
+- [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/AI/CS50%20-%20Intro%20to%20AI) 
