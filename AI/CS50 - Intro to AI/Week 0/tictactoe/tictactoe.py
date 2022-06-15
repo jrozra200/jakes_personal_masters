@@ -11,7 +11,6 @@ EMPTY = None
 ROWS = 3
 COLS = 3
 
-
 def initial_state():
     """
     Returns starting state of the board.
@@ -86,7 +85,7 @@ def result(board, action):
     """
     
     # Check to make sure it is a valid move
-    if (action[0] < 0 or action[0] > 2) or (action[1] < 0 or action[1] > 2) or (board[action[0]][action[1]] != None):
+    if (action[0] < 0 or action[0] > 2) or (action[1] < 0 or action[1] > 2): #or (board[action[0]][action[1]] != None):
         raise Exception("Invalid Move")
     
     # Make a copy of the board
@@ -173,12 +172,57 @@ def minimax(board):
         return None
     
     
-    if player(board) == "X":
-        max_x(board)
+    
+    if player(board) == "X": # then we need to start with a max
+        history = minimax_2(board, "max")
+        val = -2
+        for i in range(len(history)):
+            if history[i][1] >= val:
+                val = history[i][1]
+                move = history[i][0]
     else:
-        min_o(board)
+        history = minimax_2(board, "min")
+        val = 2
+        for i in range(len(history)):
+            if history[i][1] <= val:
+                val = history[i][1]
+                move = history[i][0]
+    
+    return move
 
-                
+def minimax_2(board, switch):
+    """
+    Returns the optimal move
+    """
+    
+    history = []
+    
+    if switch == "max":
+        for action in actions(board): 
+            # Take the first step
+            tmp_board = result(board, action)
+            if terminal(tmp_board):
+                value = utility(board)
+            else:
+                value = float('-inf')
+                value = max(value, min_o(result(board, action)))
+            
+            history.append((action, value))
+    
+    else: 
+        for action in actions(board): 
+            # Take the first step
+            tmp_board = result(board, action)
+            if terminal(tmp_board):
+                value = utility(tmp_board)
+            else:
+                value = float('inf')
+                value = min(value, max_x(result(tmp_board, action)))
+            
+            history.append((action, value))
+    
+    return history
+    
 
 def max_x(board):
     """
@@ -189,15 +233,12 @@ def max_x(board):
     if terminal(board):
         return utility(board)
     
-    # for every possible action available, find the max of the mins
     for action in actions(board):
         # create a value of -infinity
         value = float('-inf')
         value = max(value, min_o(result(board, action)))
-        
     
     return value
-    
     
 
 def min_o(board):
@@ -209,8 +250,6 @@ def min_o(board):
     if terminal(board):
         return utility(board)
     
-    
-    # for every possible action available, find the max of the mins
     for action in actions(board):
         # create a value of -infinity
         value = float('inf')
