@@ -172,14 +172,30 @@ def minimax(board):
         history = minimax_2(board, "max")
         val = -2
         for i in range(len(history)):
-            if history[i][1] >= val:
+            if history[i][1] == 1:
+                val = history[i][1]
+                move = history[i][0]
+                break
+            elif history[i][1] == -1:
+                val = history[i][1]
+                move = history[i][0]
+                break
+            elif history[i][1] >= val:
                 val = history[i][1]
                 move = history[i][0]
     else:
         history = minimax_2(board, "min")
         val = 2
         for i in range(len(history)):
-            if history[i][1] <= val:
+            if history[i][1] == -1:
+                val = history[i][1]
+                move = history[i][0]
+                break
+            elif history[i][1] == 1:
+                val = history[i][1]
+                move = history[i][0]
+                break
+            elif history[i][1] <= val:
                 val = history[i][1]
                 move = history[i][0]
     
@@ -200,7 +216,7 @@ def minimax_2(board, switch):
                 value = utility(tmp_board)
             else:
                 value = float('-inf')
-                value = max(value, min_o(result(tmp_board, action)))
+                value = max(value, min_o(result(tmp_board, action), 1))
             
             history.append((action, value))
     else: 
@@ -211,42 +227,42 @@ def minimax_2(board, switch):
                 value = utility(tmp_board)
             else:
                 value = float('inf')
-                value = min(value, max_x(result(tmp_board, action)))
+                value = min(value, max_x(result(tmp_board, action), 1))
             
             history.append((action, value))
     
     return history
     
 
-def max_x(board):
+def max_x(board, counter):
     """
     Returns the optimal move for X
     """
     
     # If terminal board, return the utility of the board
     if terminal(board):
-        return utility(board)
+        return (utility(board) / counter)
     
     for action in actions(board):
         # create a value of -infinity
         value = float('-inf')
-        value = max(value, min_o(result(board, action)))
+        value = max(value, min_o(result(board, action), counter + 1))
     
     return value
     
 
-def min_o(board):
+def min_o(board, counter):
     """
     Returns the optimal move for O
     """
     
     # If terminal board, return the utility of the board
     if terminal(board):
-        return utility(board)
+        return (utility(board) / counter)
     
     for action in actions(board):
         # create a value of -infinity
         value = float('inf')
-        value = min(value, max_x(result(board, action)))
+        value = min(value, max_x(result(board, action), counter + 1))
     
     return value
