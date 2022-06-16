@@ -23,21 +23,18 @@ def initial_state():
 #     """
 #     Returns starting state of the board.
 #     """
-#     return [["X", "O", "X"],
-#             ["X", "O", EMPTY],
-#             ["O", EMPTY, EMPTY]]
-# 
+#     return [["X", EMPTY, "X"],
+#             ["O", EMPTY, EMPTY],
+#             [EMPTY, EMPTY, EMPTY]]
+
 
 def player(board):
     """
     Returns player who has the next turn on a board.
     """
     
-    # If the board is in the initial state, return X
-    if board == initial_state():
-        return "X"
     # If the board is in the terminal state, return "Game Over"
-    elif terminal(board):
+    if terminal(board):
         return "Game Over"
     
     # Initialize the number of turns each
@@ -85,7 +82,7 @@ def result(board, action):
     """
     
     # Check to make sure it is a valid move
-    if (action[0] < 0 or action[0] > 2) or (action[1] < 0 or action[1] > 2): #or (board[action[0]][action[1]] != None):
+    if (action[0] < 0 or action[0] > 2) or (action[1] < 0 or action[1] > 2): 
         raise Exception("Invalid Move")
     
     # Make a copy of the board
@@ -171,8 +168,6 @@ def minimax(board):
     if terminal(board):
         return None
     
-    
-    
     if player(board) == "X": # then we need to start with a max
         history = minimax_2(board, "max")
         val = -2
@@ -202,13 +197,12 @@ def minimax_2(board, switch):
             # Take the first step
             tmp_board = result(board, action)
             if terminal(tmp_board):
-                value = utility(board)
+                value = utility(tmp_board)
             else:
                 value = float('-inf')
-                value = max(value, min_o(result(board, action)))
+                value = max(value, min_o(result(tmp_board, action)))
             
             history.append((action, value))
-    
     else: 
         for action in actions(board): 
             # Take the first step
