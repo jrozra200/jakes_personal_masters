@@ -139,7 +139,30 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         * everyone in set `have_trait` has the trait, and
         * everyone not in set` have_trait` does not have the trait.
     """
-    raise NotImplementedError
+    
+    # For anyone with no parents listed in the data set, use the 
+    # probability distribution PROBS["gene"] to determine the probability 
+    # that they have a particular number of the gene.
+    
+    names = set(people) # Get Names
+    gene_prob = {} # Create a new probability jawn
+    
+    # Let's get the parentless people first
+    for name in names:
+        if people[name]['mother'] == None or people[name]['father'] == None:
+            gene_prob[name] = PROBS['gene']
+    
+    # Let's get the parentless people first
+    for name in names:
+        if people[name]['mother'] != None or people[name]['father'] != None:
+            print(name)
+    # For anyone with parents in the data set, each parent will pass one of 
+    # their two genes on to their child randomly, and there is a 
+    # PROBS["mutation"] chance that it mutates (goes from being the gene to 
+    # not being the gene, or vice versa).
+    
+    # Use the probability distribution PROBS["trait"] to compute the 
+    # probability that a person does or does not have a particular trait.
 
 
 def update(probabilities, one_gene, two_genes, have_trait, p):
