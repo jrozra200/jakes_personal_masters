@@ -140,30 +140,94 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         * everyone not in set` have_trait` does not have the trait.
     """
     
-    # For anyone with no parents listed in the data set, use the 
-    # probability distribution PROBS["gene"] to determine the probability 
-    # that they have a particular number of the gene.
+    # Get Names
+    names = set(people) 
     
-    names = set(people) # Get Names
-    gene_prob = {} # Create a new probability jawn
+    # To begin, we have no prob
+    final_prob = None
     
-    # Let's get the parentless people first
+    # Let's go person by person and calculate their part of the prob
     for name in names:
-        if people[name]['mother'] == None or people[name]['father'] == None:
-            gene_prob[name] = PROBS['gene']
+        if people[name]['mother'] is None: # they have no parents
+            # How many genes do they have?
+            genes = get_genes(name, one_gene, two_genes)
+            
+            # Do they have the trait?
+            trait = get_trait(name, has_trait)
+            
+            par_prob = PROBS['gene'][genes] * PROBS['trait'][genes][trait]
+            
+            # Calculate the "final_prob"
+            final_prob = get_prob(final_prob, par_prob)
+        
+        else: # They do have parents
+            kid_genes = get_genes(name, one_gene, two_genes)
+            dad_genes = get_genes(people[name]['father'], one_gene, two_genes)
+            mom_genes = get_genes(people[name]['mother'], one_gene, two_genes)
+            
+            kid_prob = get_parent_pass(kid_genes, dad_genes, mom_genes)
+            
+            kid_trait = get_trait(name, has_trait)
+            kid_trait_prob = PROBS['trait'][kid_genes][kid_trait]
+            
+            kid_prob = kid_prob * kid_trait_prob
+            
+            final_prob = get_prob(final_prob, kid_prob)
+            
     
-    # Let's get the parentless people first
-    for name in names:
-        if people[name]['mother'] != None or people[name]['father'] != None:
-            print(name)
-    # For anyone with parents in the data set, each parent will pass one of 
-    # their two genes on to their child randomly, and there is a 
-    # PROBS["mutation"] chance that it mutates (goes from being the gene to 
-    # not being the gene, or vice versa).
+    return final_prob
+            
+def get_parent_pass(kid_genes, dad_genes, mom_genes):
     
-    # Use the probability distribution PROBS["trait"] to compute the 
-    # probability that a person does or does not have a particular trait.
+    dad_prob = pass_prob(dad_genes)
+    mom_prob = pass_prob(mom_genes)
+    
+    # Need 2 genes passed - one from each parent
+    if kid_genes == 2:
+        prob = dad_prob * mom_prob
+    elif kid_genes == 1:
+        prob = dad_prob + mom_prob
+    else:
+        prob = (1 - dad_prob) * (1 - mom_prob)
+    
+    return prob
+            
+def pass_prob(genes):
+    if genes == 2:
+        prob = (1 - PROBS['mutation']) * (1 - PROBS['mutation'])
+    elif genes == 2:
+        prob = (1 - PROBS['mutation']) * (0 + PROBS['mutation'])
+    else:
+        prob = (0 + PROBS['mutation']) * (0 + PROBS['mutation'])
+        
+    return prob
 
+def get_prob(final_prob, new_prob):
+    if final_prob == None:
+        final_prob = new_prob
+    else:
+        final_prob = final_prob * new_prob
+    
+    return final_prob
+
+def get_trait(name, has_trait):
+    if name in has_trait:
+        trait = True
+    else:
+        trait = False
+        
+    return trait
+
+
+def get_genes(name, one_gene, two_genes):
+    if name in one_gene:
+        genes = 1
+    elif name in two_genes:
+        genes = 2
+    else:
+        genes = 0
+    
+    return genes
 
 def update(probabilities, one_gene, two_genes, have_trait, p):
     """
