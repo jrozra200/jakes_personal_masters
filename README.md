@@ -49,6 +49,10 @@ possible of a way.
 7. Quantitative Finance
 8. Programming Business Model (Python)
 
+### Research
+
+1. [Understanding Research Methods](https://www.coursera.org/learn/research-methods/home/week/1)
+
 ## Course Order
 
 1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0) 
@@ -56,3 +60,4 @@ possible of a way.
 and [also the materials from the course visual studio](https://github.com/code50/9554768)
 2. [Introduction to Artificial Intelligence](https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python?delta=0)
 - [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/AI/CS50%20-%20Intro%20to%20AI) 
+3. [Understanding Research Methods](https://www.coursera.org/learn/research-methods/home/week/1)
