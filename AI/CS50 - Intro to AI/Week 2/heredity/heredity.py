@@ -142,9 +142,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
     
     # Get Names
     names = set(people) 
-    
-    # To begin, we have no prob
-    final_prob = None
+    tmp_prob = {}
     
     # Let's go person by person and calculate their part of the prob
     for name in names:
@@ -153,12 +151,11 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             genes = get_genes(name, one_gene, two_genes)
             
             # Do they have the trait?
-            trait = get_trait(name, has_trait)
+            trait = get_trait(name, have_trait)
             
             par_prob = PROBS['gene'][genes] * PROBS['trait'][genes][trait]
             
-            # Calculate the "final_prob"
-            final_prob = get_prob(final_prob, par_prob)
+            tmp_prob[name] = par_prob
         
         else: # They do have parents
             kid_genes = get_genes(name, one_gene, two_genes)
@@ -167,51 +164,41 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             
             kid_prob = get_parent_pass(kid_genes, dad_genes, mom_genes)
             
-            kid_trait = get_trait(name, has_trait)
+            kid_trait = get_trait(name, have_trait)
             kid_trait_prob = PROBS['trait'][kid_genes][kid_trait]
             
             kid_prob = kid_prob * kid_trait_prob
             
-            final_prob = get_prob(final_prob, kid_prob)
+            tmp_prob[name] = kid_prob
             
+    final_prob = 1
+    for val in tmp_prob.values():
+        final_prob *= val
     
     return final_prob
             
 def get_parent_pass(kid_genes, dad_genes, mom_genes):
     
-    dad_prob = pass_prob(dad_genes)
-    mom_prob = pass_prob(mom_genes)
+    mut = PROBS['mutation']
+    dad = abs((dad_genes / 2) - mut)
+    mom = abs((mom_genes / 2) - mut)
     
-    # Need 2 genes passed - one from each parent
     if kid_genes == 2:
-        prob = dad_prob * mom_prob
+        # you need to get one from your mom AND one from your dad
+        prob = dad * mom
     elif kid_genes == 1:
-        prob = dad_prob + mom_prob
+        # you need to get one from your mom AND NOT one from your dad OR 
+        # you need to NOT get one from your mom AND one from your dad  
+        prob = (mom * (1 - dad)) + ((1 - mom) * dad)
     else:
-        prob = (1 - dad_prob) * (1 - mom_prob)
+        # you need to NOT get one from your mom AND NOT one from your dad 
+        prob = (1 - mom) * (1 - dad)
+        
     
     return prob
             
-def pass_prob(genes):
-    if genes == 2:
-        prob = (1 - PROBS['mutation']) * (1 - PROBS['mutation'])
-    elif genes == 2:
-        prob = (1 - PROBS['mutation']) * (0 + PROBS['mutation'])
-    else:
-        prob = (0 + PROBS['mutation']) * (0 + PROBS['mutation'])
-        
-    return prob
-
-def get_prob(final_prob, new_prob):
-    if final_prob == None:
-        final_prob = new_prob
-    else:
-        final_prob = final_prob * new_prob
-    
-    return final_prob
-
-def get_trait(name, has_trait):
-    if name in has_trait:
+def get_trait(name, have_trait):
+    if name in have_trait:
         trait = True
     else:
         trait = False
@@ -236,7 +223,20 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     Which value for each distribution is updated depends on whether
     the person is in `have_gene` and `have_trait`, respectively.
     """
-    raise NotImplementedError
+    
+    # Get the unique names
+    names = set(probabilities)
+    
+    # For each unique name in probabilities...
+    for name in names:
+        
+        # ... figure out how many genes and what trait they have...
+        genes = get_genes(name, one_gene, two_genes)
+        trait = get_trait(name, have_trait)
+        
+        # ... then update the appropriate probability with p
+        probabilities[name]['gene'][genes] += p
+        probabilities[name]['trait'][trait] += p
 
 
 def normalize(probabilities):
@@ -244,7 +244,37 @@ def normalize(probabilities):
     Update `probabilities` such that each probability distribution
     is normalized (i.e., sums to 1, with relative proportions the same).
     """
-    raise NotImplementedError
+    
+    # Get the unique names
+    names = set(probabilities)
+    
+    for name in names:
+        
+        # First let's update the genes dict
+        
+        # Get the current probabilities
+        two_genes = probabilities[name]['gene'][2]
+        one_gene = probabilities[name]['gene'][1]
+        no_genes = probabilities[name]['gene'][0]
+        
+        # 1 = alpha * (two_genes + one_gene + no_genes)
+        alpha = 1 / (two_genes + one_gene + no_genes)
+        
+        # update the probabilities with alpha
+        probabilities[name]['gene'][2] = two_genes * alpha
+        probabilities[name]['gene'][1] = one_gene * alpha
+        probabilities[name]['gene'][0] = no_genes * alpha
+        
+        # Now let's update the trait dict
+        have_trait = probabilities[name]['trait'][True]
+        no_trait = probabilities[name]['trait'][False]
+        
+        # 1 = alpha * (have_trait + no_trait)
+        alpha = 1 / (have_trait + no_trait)
+        
+        # update the probabilities with alpha
+        probabilities[name]['trait'][True] = have_trait * alpha
+        probabilities[name]['trait'][False] = no_trait * alpha
 
 
 if __name__ == "__main__":
