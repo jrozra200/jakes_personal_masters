@@ -2,3 +2,4 @@
 
 ## Lecture Notes
 
+This lecture was primarily review for me. No notes.
