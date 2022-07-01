@@ -26,3 +26,22 @@ function hill-climb(problem):
         - First-choice: pick the first neighbor that is higher valued
         - Random-restart: conduct hill climbing multiple times
         - Local beam search: chooses the k-highest valued neighbors
+- Simulated Annealing: 
+    - early on in the simulation, more likely to accept a neighbor that is worse
+    - later on in the simulation, less likely to accept a neighbor that is worse
+    - Pseudo-code:
+    
+``` python
+function simulated-annealing(problem, max):
+    current = initial state of problem
+    for t = 1 to max:
+        T = temperature(t)
+        neighbor = random neighbor of current
+        delta_E = how much better is neighbor than current
+        if delta_E > 0:
+            current = neighbor
+        with probability e ^ delta_E/t set current = neighbor
+    
+    return current
+```
+
