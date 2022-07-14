@@ -39,8 +39,8 @@ possible of a way.
 
 ### Finance 
 
+1. [An Introduction to Quantitative Finance](https://vittaquant-ai.com/wp-content/uploads/2021/08/An-Introduction-to-Quantitative-Finance-by-Stephen-Blyth.pdf)
 1. Introduction to Quantitative Methods in Finance (Python)
-2. Introduction to Quantitative Methods in Finance (R)
 2. Investment Banking
 3. Fixed Income
 4. Portfolio Management
@@ -56,7 +56,9 @@ possible of a way.
 ## Course Order
 
 1. [Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0) 
-- [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science) 
+    - [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Computer%20Science/CS50%20-%20Intro%20to%20Computer%20Science) 
 and [also the materials from the course visual studio](https://github.com/code50/9554768)
 2. [Introduction to Artificial Intelligence](https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python?delta=0)
-- [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/AI/CS50%20-%20Intro%20to%20AI) 
+    - [Notes and other materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/AI/CS50%20-%20Intro%20to%20AI) 
+3. [An Introduction to Quantitative Finance](https://vittaquant-ai.com/wp-content/uploads/2021/08/An-Introduction-to-Quantitative-Finance-by-Stephen-Blyth.pdf)
+    - [Notes and other Materials](https://github.com/jrozra200/jakes_personal_masters/tree/main/Finance/An%20Introduction%20to%20Quantitative%20Finance)
