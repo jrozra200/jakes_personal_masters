@@ -8,3 +8,7 @@ by Stephen Blyth
 
 ### Preface
 
+Looking at the probability refresher in the preface, I want to take a quick 
+interlude to review my stats theory text from grad school. 
+
+More on that can be [found here](insert link).
