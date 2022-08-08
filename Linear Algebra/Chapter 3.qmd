@@ -1,0 +1,35 @@
+---
+title: "Chapter 3"
+author: "Jake Rozran"
+format: 
+    html:
+        toc: true
+        smooth-scroll: true
+        code-fold: true
+---
+
+## 3.1
+
+### Code Example
+
+```{python}
+import numpy as np
+
+v1 = np.array([2, 5, 4, 7])
+v2 = np.array([4, 1, 0, 2])
+
+dp = np.dot(v1, v2)
+```
+
+## 3.2
+
+### Practice Problems
+
+a. -10
+b. 4 - 9 = -5
+c. -49 + 48 = -1
+d. 1 - 1 = 0
+e. 0 - 1 + 0 = -1
+f. 16 + 1 + 9 = 26
+g. 35 - 10.5 - 24 = 0.5
+h. (81 + 3 + 9) / 3 = 31
