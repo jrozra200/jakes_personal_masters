@@ -1,0 +1,78 @@
+---
+title: "Chapter 2"
+author: "Jake Rozran"
+format: 
+    html:
+        toc: true
+        smooth-scroll: true
+        code-fold: true
+---
+
+## 2.4
+
+### Practice Problems
+
+a. [4 5 1 0] + [-4 -3 3 10] = [0 2 4 10]
+b. [4 2 0]^T^ - [6 -4 -60]^T^ + [2 -5 40]^T^ = [0 1 100]^T^ --> seems like there is a typo in the book
+
+```{python}
+import numpy as np
+
+array1 = np.array([ [4], [2], [0] ])
+array2 = np.array([ [6], [-4], [-60] ])
+array3 = np.array([ [2], [-5], [40] ])
+
+array1 - array2 + array3 
+```
+
+c. [1 0]^T^ + [1 2]^T^ = [2 2]^T^
+d. [2 2]^T^ - [3 4]^T^ = [-1 -2]^T^
+e. [-3 1]^T^ + [3 -1]^T^ = [0 0]^T^
+f. [1 4]^T^ + [2 8]^T^ = [3 12]^T^
+
+## 2.5
+
+### Code Block
+
+```{python}
+v1 = np.array([2, 5, 4, 7])
+v2 = np.array([4, 1, 0, 2])
+v3 = (4 * v1) - (2 * v2)
+v3
+```
+
+### Practice Problems
+
+a. -2[4 3 0] = [-8 -6 0]
+b. (-9 + 2 * 5)[0 4 3]^T^ = (1)[0 4 3]^T^ = [0 4 3]^T^
+c. 0[x y z a]^T^ = [0 0 0 0]^T^
+d. λ[0 3 1 11]^T^ = [0 3λ λ 11λ]^T^
+
+## 2.6 Exercises
+
+[Done in OneNote](https://villanova-my.sharepoint.com/:o:/r/personal/jrozran1_villanova_edu/Documents/Jake%27s%20Personal%20Masters?d=wffcd79b69f8942d784546261ca5079fb&csf=1&web=1&e=PNcIHs)
+
+## 2.8 Code Challenge
+
+```{python}
+from plotnine import *
+import pandas as pd
+
+scalars = np.random.normal(size = 10)
+v = np.array([3, 17])
+
+plot_dat = pd.DataFrame()
+for sclr in scalars:
+    tmp = pd.DataFrame({
+        'x': v[0] * sclr,
+        'y': v[1] * sclr
+    }, index = [0])
+    
+    plot_dat = pd.concat([plot_dat, tmp], ignore_index = True)
+
+(
+    ggplot(plot_dat) +
+        aes(x = 'x', y = 'y') + 
+        geom_point()
+)
+```
